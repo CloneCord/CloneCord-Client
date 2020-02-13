@@ -1,7 +1,5 @@
 
 
-
-
 function registerCallback(data, status, xhr) {
     console.log(status);
     console.log(data);
@@ -24,3 +22,7 @@ function onRegister() {
         console.log(registered);
     })
 }
+
+$(document).ready(function (){
+    $("#registerbutton").click(onRegister);
+});

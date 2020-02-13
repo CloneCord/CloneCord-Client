@@ -1,7 +1,6 @@
 
 const server = "http://localhost:8080";
 
-const headers_ref = {"Accept" : "application/json", "Content-Type": "application/json"};
 
 function post(endpoint, data,auth, callback, errorCallback){
     make_request(endpoint,data,auth,"POST",callback,errorCallback);
@@ -12,22 +11,21 @@ function get(endpoint,auth, callback, errorCallback){
 }
 
 function make_request(endpoint, data,authToken,method, callback, errorCallback){
-    let headers = {};
-    Object.assign(headers_ref,headers);
+    let headers = {"Accept" : "application/json", "Content-Type": "application/json"};
     if (authToken !== undefined){
         headers["Authorization"] = "Bearer " + authToken;
     }
     let ajaxData = {
-        headers: JSON.stringify(headers),
-        'type' : method,
-        'url' : server + endpoint,
-        'success' : callback
+        headers: headers,
+        method : method,
+        url : server + endpoint,
+        success : callback
     };
     if(data !== undefined){
-        ajaxData['data'] = JSON.stringify(data);
+        ajaxData.data = JSON.stringify(data);
     }
     if(errorCallback !== undefined){
-        ajaxData['error'] = errorCallback;
+        ajaxData.error = errorCallback;
     }
     $.ajax(ajaxData);
 }
@@ -39,13 +37,12 @@ class Auth{
 
     static register(email, password){
         return new Promise(function (resolve) {
-            post(Auth.prefix + "/register",{email: email, password : password},function (data,statustext,xhr){
+            post(Auth.prefix + "/register",{email: email, password : password},undefined,function (data,statustext,xhr){
                 resolve(xhr.status === 200);
-            },function(){
+            },function(xhr){
+                console.log(xhr.responseJSON);
                 resolve(false);
             });
         })
     }
-
-
 }
