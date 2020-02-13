@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="js/register.js" type="text/javascript"></script>
     <title>CloneCord - Inscription</title>
 </head>
 <body>
@@ -13,19 +15,19 @@
     <hr>
 
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Votre email" name="email" required>
+    <input type="text" placeholder="Votre email" id="email" required>
 
     <label for="psw"><b>Mot de passe</b></label>
-    <input type="password" placeholder="Mot de passe" name="psw" required>
+    <input type="password" placeholder="Mot de passe" id="psw" required>
 
     <label for="psw-repeat"><b>Répéter le mot de passe</b></label>
-    <input type="password" placeholder="Mot de passe" name="psw-repeat" required>
+    <input type="password" placeholder="Mot de passe" id="psw-repeat" required>
 
     <p>En créant un compte, vous acceptez les <a href="#" style="color:dodgerblue">Conditions d'utilisation</a>.</p>
 
     <div class="clearfix">
       <button type="button" class="cancelbtn">Annuler</button>
-      <button type="submit" class="signupbtn">S'inscrire</button>
+      <button type="submit" class="signupbtn" onclick="onRegister()">S'inscrire</button>
     </div>
   </div>
 </body>
