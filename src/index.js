@@ -6,12 +6,12 @@ let mainWindow;
 function createWindow(){
 
     mainWindow = new BrowserWindow({
-        width: 900,
-        height:600,
+        width: 1280,
+        height:720,
         webPreferences:{
             nodeIntegration: true
         },
-        icon:__dirname+'/img/CloneCordAppIcon.png'
+        icon:__dirname+'/img/CloneCordAppIcon.png',
     });
     mainWindow.loadFile(__dirname+"/html/register.html");
     mainWindow.on('closed', function(){
