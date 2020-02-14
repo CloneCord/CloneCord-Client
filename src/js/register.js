@@ -14,7 +14,11 @@ function onRegister() {
     let password_repeat = $("#psw-repeat").val();
 
     if (password !== password_repeat){
-        console.log("déso");
+        Swal.fire({
+          icon: 'error',
+          title: 'Aïe...',
+          text: 'Les mots de passe ne correspondent pas !',
+        })
         return;
     }
 
