@@ -1,4 +1,4 @@
-
+const Swal = require('sweetalert2');
 
 function registerCallback(data, status, xhr) {
     console.log(status);
