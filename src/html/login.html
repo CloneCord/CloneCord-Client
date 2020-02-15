@@ -5,26 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" media="screen" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
     <title>CloneCord - Connexion</title>
 </head>
 <body>
-        <div class="container">
-          <label for="uname"><b>Identifiant (nom d'utilisateur ou email)</b></label>
-          <input type="text" placeholder="Identifiant" id="uname" required>
-      
-          <label for="psw"><b>Mot de passe</b></label>
-          <input type="password" placeholder="Mot de passe" id="psw" required>
-      
-          <button type="submit">Se connecter</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember"> Rester connecté
-          </label>
+<div class="left-container">
+    <div class="left">
+        <img src="../img/CloneCord.png">
+        <p>CloneCord</p>
+    </div>
+</div>
+<div class="right-container">
+    <div class="right">
+        <p class="title">Veuillez vous connecter à votre compte CloneCord.</p>
+
+        <input type="text" placeholder="Votre nom d'utilisateur" id="username" required>
+        <input type="email" placeholder="Votre adresse email" id="email" required>
+        <input type="password" placeholder="Mot de passe" id="psw" required>
+
+        <p class="already">Vous n'avez pas de compte ? <a href="register.html">Inscrivez vous ici</a>.</p>
+
+        <div class="clearfix">
+            <button type="submit" class="signinbtn" id="loginbutton">Se connecter</button>
         </div>
-      
-        <div class="container" style="background-color:#f1f1f1">
-          <button type="button" class="cancelbtn">Annuler</button>
-          <span class="psw">Mot de passe <a href="#">oublié ?</a></span>
-        </div>
+    </div>
+</div>
 </body>
 </html>
