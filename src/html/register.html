@@ -14,34 +14,26 @@
 </head>
 <body>
   <div class="left-container">
-    <div class="vector"></div>
     <div class="left">
       <img src="../img/CloneCord.png">
       <p>CloneCord</p>
     </div>
   </div>
   <div class="right-container">
-    <h1>Inscription</h1>
-    <p>Veuillez remplir ce formulaire afin de vous créer un compte sur CloneCord</p>
-    <hr>
+    <div class="right">
+      <p class="title">Veuillez vous créer un compte sur CloneCord.</p>
 
-    <label for="email"><b>Username</b></label>
-    <input type="text" placeholder="Votre nom d'utilisateur" id="username" required>
+      <input type="text" placeholder="Votre nom d'utilisateur" id="username" required>
+      <input type="text" placeholder="Votre adresse E-Mail" id="email" required>
+      <input type="password" placeholder="Mot de passe" id="psw" required>
+      <input type="password" placeholder="Confirmation" id="psw-repeat" required>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Votre email" id="email" required>
+      <p class="conditions">En créant un compte, vous acceptez les <a href="#">Conditions d'utilisation</a>.</p>
+      <p class="already">Déjà un compte ? <a href="#">Connectez vous ici</a>.</p>
 
-    <label for="psw"><b>Mot de passe</b></label>
-    <input type="password" placeholder="Mot de passe" id="psw" required>
-
-    <label for="psw-repeat"><b>Répéter le mot de passe</b></label>
-    <input type="password" placeholder="Mot de passe" id="psw-repeat" required>
-
-    <p>En créant un compte, vous acceptez les <a href="#" style="color:dodgerblue">Conditions d'utilisation</a>.</p>
-
-    <div class="clearfix">
-      <button type="button" class="cancelbtn">Annuler</button>
-      <button type="submit" class="signupbtn" id="registerbutton">S'inscrire</button>
+      <div class="clearfix">
+        <button type="submit" class="signupbtn" id="registerbutton">S'inscrire</button>
+      </div>
     </div>
   </div>
 </body>
