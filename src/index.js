@@ -4,7 +4,6 @@ const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 let mainWindow;
 
 const mainMenuTemplate =  [
-  // Each object is a dropdown
   {
     label: 'File',
     submenu:[
@@ -29,10 +28,9 @@ const mainMenuTemplate =  [
 
 function startApp(){
     createWindow();
+    const menu = Menu.buildFromTemplate(mainMenuTemplate)
+    Menu.setApplicationMenu(menu)
 }
-
-const menu = Menu.buildFromTemplate(mainMenuTemplate)
-Menu.setApplicationMenu(menu)
 
 function createWindow(){
     mainWindow = new BrowserWindow({
