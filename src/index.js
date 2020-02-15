@@ -13,6 +13,7 @@ function createWindow(){
         },
         icon:__dirname+'/img/CloneCordAppIcon.png',
     });
+    mainWindow.removeMenu();
     mainWindow.loadFile(__dirname+"/html/register.html");
     mainWindow.on('closed', function(){
         app.exit();
