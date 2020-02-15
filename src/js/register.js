@@ -7,6 +7,12 @@ function registerCallback(data, status, xhr) {
 }
 
 function onRegister() {
+    iziToast.show({
+        title:"oui"
+    });
+
+    let username = $("#username").val();
+
     let email = $("#email").val();
 
     let password = $("#psw").val();
@@ -18,24 +24,24 @@ function onRegister() {
           icon: 'error',
           title: 'Aïe...',
           text: 'Les mots de passe ne correspondent pas !',
-        })
+        });
         return;
     }
-    var CloneCordApi = require("clone_cord_api");
-    CloneCordApi.basePath = "http://localhost:8080"; //todo set ca au lancement de l'app
-    var api = new CloneCordApi.AuthenticationApi();
-    var opts = {
-        'user': new CloneCordApi.FormLogin() // {FormLogin} Login data
-    };
+    let CloneCordApi = require("clone_cord_api");
+    let api = new CloneCordApi.AuthenticationApi();
+    let reg = new CloneCordApi.RegistrationUser(email,password,username);
 
-    var callback = function(error, data, response) {
+    let callback = function(error, data, response) {
         if (error) {
             console.error(error);
         } else {
             console.log('API called successfully.');
+
         }
+        console.log(data);
+        console.log(response)
     };
-    api.loginUsingPOST(opts, callback);
+    api.signUpUsingPOST(reg,callback);
 }
 
 $(document).ready(function (){
