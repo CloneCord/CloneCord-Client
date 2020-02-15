@@ -118,6 +118,7 @@ body {
     width: 180px;
     height: 60px;
     cursor: pointer;
+    transition: .3s all ease;
 }
 .clearfix button:hover {
     background-color: #282B33;
