@@ -18,6 +18,7 @@ body {
     color: #B0C7F7;
     font-size: 50px;
     cursor: pointer;
+    transition: .4s all ease;
 }
 .left-container p:hover {
     color: rgb(141, 168, 226); /* Je sais pas quelle couleur */
