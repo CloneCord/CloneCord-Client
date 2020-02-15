@@ -21,10 +21,21 @@ function onRegister() {
         })
         return;
     }
+    var CloneCordApi = require("clone_cord_api");
+    CloneCordApi.basePath = "http://localhost:8080"; //todo set ca au lancement de l'app
+    var api = new CloneCordApi.AuthenticationApi();
+    var opts = {
+        'user': new CloneCordApi.FormLogin() // {FormLogin} Login data
+    };
 
-    Auth.register(email,password).then(function (registered) {
-        console.log(registered);
-    })
+    var callback = function(error, data, response) {
+        if (error) {
+            console.error(error);
+        } else {
+            console.log('API called successfully.');
+        }
+    };
+    api.loginUsingPOST(opts, callback);
 }
 
 $(document).ready(function (){

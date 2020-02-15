@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/CloneCord/CloneCord-Client#readme",
   "dependencies": {
-    "electron": "^8.0.0",
+    "clone_cord_api": "^1.0.1",
+    "electron": "^8.0.1",
     "jquery": "^3.4.1",
     "sweetalert2": "^9.7.2"
   }
