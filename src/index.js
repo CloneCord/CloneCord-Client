@@ -1,10 +1,40 @@
 
-const {app, BrowserWindow, ipcMain} = require("electron");
+const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 
 let mainWindow;
 
-function createWindow(){
+const mainMenuTemplate =  [
+  // Each object is a dropdown
+  {
+    label: 'File',
+    submenu:[
+      {
+        label: 'Quitter',
+        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+        click(){
+          app.quit();
+        }
+      }
+    ]
+  },
+  {
+      label: 'Développement',
+      submenu:[
+        {
+          role: 'toggleDevTools'
+        }
+      ]
+  }
+];
 
+function startApp(){
+    createWindow();
+}
+
+const menu = Menu.buildFromTemplate(mainMenuTemplate)
+Menu.setApplicationMenu(menu)
+
+function createWindow(){
     mainWindow = new BrowserWindow({
         width: 1280,
         height:720,
@@ -13,14 +43,13 @@ function createWindow(){
         },
         icon:__dirname+'/img/CloneCordAppIcon.png',
     });
-    mainWindow.removeMenu();
     mainWindow.loadFile(__dirname+"/html/register.html");
     mainWindow.on('closed', function(){
         app.exit();
     });
 }
 
-app.whenReady().then(createWindow);
+app.whenReady().then(startApp);
 
 let onlineStatusWindow
 
