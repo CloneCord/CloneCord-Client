@@ -136,3 +136,7 @@ body {
         flex-wrap: wrap;
     }
 }
+input:focus::placeholder {
+    color: transparent;
+    transition: .1s all ease;
+}
