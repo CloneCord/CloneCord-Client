@@ -65,19 +65,26 @@ body {
     font-size: 18px;
     color: #9EA0A4;
 }
-.right .already {
+.right .noacc {
     padding-top: 5px;
     font-size: 18px;
     color: #9EA0A4;
+}
+.right .forgot {
+    padding-top: 5px;
+    font-size: 18px;
 }
 .right a {
     text-decoration: none;
     color: dodgerblue;
 }
-.right .already a:hover {
+.right .noacc a:hover {
     color: #B0C7F7; /* Je sais pas non plus */
 }
 .right .conditions a:hover {
+    color: #B0C7F7; /* Je sais pas non plus */
+}
+.right .forgot:hover {
     color: #B0C7F7; /* Je sais pas non plus */
 }
 .right input {
@@ -110,7 +117,7 @@ body {
     outline:none;
 }
 .clearfix button {
-    margin-top: 30px;
+    margin-top: 20px;
     color: #9EA0A4;
     font-size: 18px;
     background-color: #2B2E36;
