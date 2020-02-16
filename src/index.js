@@ -39,6 +39,7 @@ function createWindow(){
         webPreferences:{
             nodeIntegration: true
         },
+        backgroundColor : " #282B33",
         icon:__dirname+'/img/CloneCordAppIcon.png',
     });
     mainWindow.loadFile(__dirname+"/html/register.html");
@@ -48,6 +49,8 @@ function createWindow(){
 }
 
 app.whenReady().then(startApp);
+app.commandLine.appendSwitch('disable-backgrounding-occluded-windows', 'true')
+app.commandLine.appendSwitch('remote-debugging-port', '9222')
 
 let onlineStatusWindow
 
