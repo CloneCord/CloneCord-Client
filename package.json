@@ -2,9 +2,11 @@
   "name": "clonecord-client",
   "version": "1.0.0",
   "description": "Client for CloneCord",
-  "main": "src/index.js",
+  "main": "src/main/index.js",
   "scripts": {
-    "start": "electron ."
+    "build": "babel src -d lib",
+    "start": "electron .",
+    "dev": "electron-webpack dev"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,15 @@
     "izitoast": "^1.4.0",
     "jquery": "^3.4.1",
     "sweetalert2": "^9.7.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.5",
+    "http-vue-loader": "^1.4.1",
+    "electron-webpack": "^2.7.4",
+    "electron-webpack-vue": "^2.3.0",
+    "webpack": "^4.41.6",
+    "vue-loader": "^15.9.0"
+  },
+  "devDependencies": {
+    "vue-devtools": "^5.1.3"
   }
 }

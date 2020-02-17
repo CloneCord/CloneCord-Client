@@ -1,0 +1,9 @@
+{
+  "main": {
+    "sourceDirectory": "src/main"
+  },
+  "renderer": {
+    "sourceDirectory": "src/renderer",
+    "template": "src/renderer/index.html"
+  }
+}
