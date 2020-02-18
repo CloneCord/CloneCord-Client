@@ -4,9 +4,13 @@
   "description": "Client for CloneCord",
   "main": "src/main/index.js",
   "scripts": {
-    "build": "babel src -d lib",
-    "start": "electron .",
-    "dev": "electron-webpack dev"
+    "dev": "electron-webpack dev",
+    "compile": "electron-webpack"
+  },
+  "build": {
+    "files": [
+      "build/*"
+    ]
   },
   "repository": {
     "type": "git",

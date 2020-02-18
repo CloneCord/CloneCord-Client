@@ -32,20 +32,22 @@ import {format as formatUrl} from 'url'
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
 function startApp(){
-    createWindow();
+    let w = createWindow();
     const menu = Menu.buildFromTemplate(mainMenuTemplate);
-    Menu.setApplicationMenu(menu)
+    Menu.setApplicationMenu(menu);
+    return w;
 }
 
 function createWindow(){
+    console.log(__dirname);
     let window = new BrowserWindow({
         width: 1280,
-        height:720,
-        webPreferences:{
+        height: 720,
+        webPreferences: {
             nodeIntegration: true
         },
-        backgroundColor : " #282B33",
-        icon:__dirname+'/img/CloneCordAppIcon.png',
+        backgroundColor: " #282B33",
+        icon: path.join(__dirname, "build", "icon.png"),
     });
     if (isDevelopment) {
         window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
@@ -64,18 +66,18 @@ function createWindow(){
 }
 
 app.whenReady().then(() => {
-    mainWindow = createWindow();
+    mainWindow = startApp();
 });
 app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
-
-let onlineStatusWindow;
-
+//
+// let onlineStatusWindow;
+//
 // app.whenReady().then(() => {
 //   onlineStatusWindow = new BrowserWindow({ width: 0, height: 0, show: false, webPreferences: { nodeIntegration: true } })
 //   onlineStatusWindow.loadURL(__dirname+"/html/online-status.html")
 // })
 //
-// ipcMain.on('online-status-changed', (event, status) => {
-//   console.log(status)
-// })
+ipcMain.on('online-status-changed', (event, status) => {
+    console.log(status)
+});
