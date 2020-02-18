@@ -1,5 +1,18 @@
+import "./static/style.css"
+
 import Vue from 'vue'
-import App from './App.vue'
+import VueRouter from 'vue-router'
+import routes from "./routing"
+import App from './components/App.vue'
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({routes});
+
+router.replace("/register");
+
+
 new Vue({
-    render: h => h(App)
-}).$mount("#app")
+    router,
+    render: h => h(App),
+}).$mount("#app");

@@ -8,11 +8,11 @@ const mainMenuTemplate =  [
     label: 'File',
     submenu:[
       {
-        label: 'Quitter',
-        accelerator:process.platform == 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-        click(){
-          app.quit();
-        }
+          label: 'Quitter',
+          accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+          click() {
+              app.quit();
+          }
       }
     ]
   },
@@ -27,13 +27,13 @@ const mainMenuTemplate =  [
 ];
 
 import * as path from 'path'
-import { format as formatUrl } from 'url'
+import {format as formatUrl} from 'url'
 
-const isDevelopment = process.env.NODE_ENV !== 'production'
+const isDevelopment = process.env.NODE_ENV !== 'production';
 
 function startApp(){
     createWindow();
-    const menu = Menu.buildFromTemplate(mainMenuTemplate)
+    const menu = Menu.buildFromTemplate(mainMenuTemplate);
     Menu.setApplicationMenu(menu)
 }
 
@@ -66,8 +66,10 @@ function createWindow(){
 app.whenReady().then(() => {
     mainWindow = createWindow();
 });
+app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
-let onlineStatusWindow
+
+let onlineStatusWindow;
 
 // app.whenReady().then(() => {
 //   onlineStatusWindow = new BrowserWindow({ width: 0, height: 0, show: false, webPreferences: { nodeIntegration: true } })
