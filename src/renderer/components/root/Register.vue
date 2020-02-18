@@ -25,6 +25,7 @@
 <script>
     import LeftLogoBar from "../misc/LeftLogoBar";
     import Swal from "sweetalert2";
+    import easycallback from "../../easycallback";
 
     export default {
         name: "Register",
@@ -61,24 +62,15 @@
                 let api = new CloneCordApi.AuthenticationApi();
                 let reg = new CloneCordApi.RegistrationUser(email.value, password.value, username.value);
                 let main = this;
-                let callback = function (error, data, response) {
-                    if (error) {
-                        if (response.statusCode === 400) {
-                            console.log(response);
-                            let errors = response.body.errors;
-                            errors.forEach(function (err) {
-                                let field = main.$refs[err.field];
-                                field.setCustomValidity(err.defaultMessage);
-                                field.reportValidity();
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: "error",
-                                title: "Whoops",
-                                text: "An error has occured : " + error.toString(),
-                                heightAuto: false,
-                            })
-                        }
+                let callback = function (data, response) {
+                    if (response.statusCode === 400) {
+                        console.log(response);
+                        let errors = response.body.errors;
+                        errors.forEach(function (err) {
+                            let field = main.$refs[err.field];
+                            field.setCustomValidity(err.defaultMessage);
+                            field.reportValidity();
+                        });
                     } else {
                         console.log('API called successfully.');
                         Swal.fire({
@@ -89,9 +81,8 @@
                             onClose: main.toLogin(),
                         })
                     }
-
                 };
-                api.signUpUsingPOST(reg, callback);
+                api.signUpUsingPOST(reg, easycallback(callback));
             },
             toLogin() {
                 this.$router.replace("/login")
