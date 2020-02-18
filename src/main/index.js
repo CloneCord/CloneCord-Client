@@ -39,7 +39,6 @@ function startApp(){
 }
 
 function createWindow(){
-    console.log(__dirname);
     let window = new BrowserWindow({
         width: 1280,
         height: 720,
@@ -68,6 +67,7 @@ function createWindow(){
 app.whenReady().then(() => {
     mainWindow = startApp();
 });
+app.commandLine.appendSwitch('disable-backgrounding-occluded-windows', 'true');
 app.commandLine.appendSwitch('remote-debugging-port', '9222');
 
 //

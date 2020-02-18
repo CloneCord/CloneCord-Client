@@ -1,22 +1,19 @@
 <template>
     <div id="Login">
-        <LeftLogoBar/>
-        <div class="right">
             <p class="title">Veuillez vous connecter à votre compte CloneCord.</p>
 
             <input placeholder="Votre adresse email" ref="email" required type="email">
             <input placeholder="Mot de passe" ref="password" required type="password">
 
             <p class="noacc">Vous n'avez pas de compte ?
-                <router-link to="/register">Inscrivez vous ici</router-link>
+                <router-link to="register">Inscrivez vous ici</router-link>
                 .
             </p>
-            <router-link class="forgot" to="/forgot">Mot de passe oublié ?</router-link>
+        <router-link class="forgot" to="forgot">Mot de passe oublié ?</router-link>
 
             <div class="clearfix">
                 <button class="signinbtn" id="loginbutton" type="submit" v-on:click="tryLogIn">Se connecter</button>
             </div>
-        </div>
     </div>
 </template>
 

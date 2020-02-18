@@ -7,68 +7,17 @@
 
 html, body {
     height: 100%;
+    background-color: #1C2026;
+    overflow-x: hidden;
 }
 
 body {
     padding: 0;
     margin: 0;
-}
-
-.right {
-    padding-right: 100px;
-    height: 100%;
-    width: 100%;
     background-color: #1C2026;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    -ms-flex-align: center;
 }
 
-.right .title {
-    padding-bottom: 30px;
-    font-size: 28px;
-    color: white;
-}
 
-.right a {
-    text-decoration: none;
-    color: dodgerblue;
-}
-
-.right a:hover {
-    color: #B0C7F7; /* Je sais pas non plus */
-}
-
-.right input {
-    width: 300px;
-    height: 40px;
-    background-color: #282B33;
-    border: 0;
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-}
-.right input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #B0C7F7;
-    opacity: 1; /* Firefox */
-}
-.right input:-ms-input-placeholder{ /* Internet Explorer 10-11 */
-    color: #B0C7F7;
-}
-.right input::-ms-input-placeholder { /* Microsoft Edge */
-    color: #B0C7F7;
-}
-.right input:focus {
-    outline:none;
-}
-.right input, select, textarea{
-    color: #B0C7F7;
-}
 .clearfix button:focus {
     outline:none;
 }
@@ -88,11 +37,6 @@ body {
     background-color: #282B33;
     transition: .3s all ease;
     color: #B0C7F7;
-}
-@media screen and (max-width: 1600px){
-    .right {
-        padding: 0;
-    }
 }
 @media screen and (max-width: 1024px){
     body{

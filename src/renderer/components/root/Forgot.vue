@@ -1,7 +1,5 @@
 <template>
     <div id="Forgot">
-        <LeftLogoBar/>
-        <div class="right">
             <p class="title">Veuillez renseigner l'addresse de votre compte CloneCord.</p>
 
             <input id="email" placeholder="Votre adresse email" required type="email">
@@ -10,12 +8,11 @@
                 <router-link to="/register">Inscrivez vous ici</router-link>
                 .
             </p>
-            <router-link class="goback" to="/login">Retour à la connexion</router-link>
+            <router-link class="goback" to="login">Retour à la connexion</router-link>
 
             <div class="clearfix">
                 <button class="signinbtn" id="loginbutton" type="submit">Envoie</button>
             </div>
-        </div>
     </div>
 </template>
 

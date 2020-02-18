@@ -1,7 +1,5 @@
 <template>
     <div id="Register">
-        <LeftLogoBar/>
-        <div class="right">
             <p class="title">Veuillez vous créer un compte sur CloneCord.</p>
             <input id="username" placeholder="Votre nom d'utilisateur" ref="username" required type="text">
             <input id="email" placeholder="Votre adresse email" ref="email" required type="email">
@@ -10,7 +8,7 @@
 
             <p class="conditions">En créant un compte, vous acceptez les <a href="#">Conditions d'utilisation</a>.</p>
             <p class="already">Déjà un compte ?
-                <router-link to="/login">Connectez vous ici</router-link>
+                <router-link to="login">Connectez vous ici</router-link>
                 .
             </p>
 
@@ -18,7 +16,6 @@
                 <button class="signupbtn" id="registerbutton" type="submit" v-on:click="onRegister()">S'inscrire
                 </button>
             </div>
-        </div>
     </div>
 </template>
 

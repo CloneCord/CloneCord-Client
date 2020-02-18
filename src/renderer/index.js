@@ -11,7 +11,7 @@ Vue.use(Vuex);
 
 const router = new VueRouter({routes});
 
-router.replace("/register");
+router.replace("/auth/register");
 
 
 new Vue({
