@@ -82,7 +82,7 @@
                 api.signUpUsingPOST(reg, easycallback(callback));
             },
             toLogin() {
-                this.$router.replace("/login")
+                this.$router.replace("./login")
             }
         }
     }

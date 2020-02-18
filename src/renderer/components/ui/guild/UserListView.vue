@@ -1,7 +1,7 @@
 <template>
     <div id="UserList">
         <ul v-for="u in userList">
-            <router-link v-bind:to="'../user/' + u.id">{{u.name}}</router-link>
+            <router-link v-bind:to="'../user/' + u.id">{{u.username}}</router-link>
         </ul>
     </div>
 </template>

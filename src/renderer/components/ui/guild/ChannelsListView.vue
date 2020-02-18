@@ -1,9 +1,11 @@
 <template>
     <div id="ChannelList">
-        <ul v-bind:id="channel.id" v-for="channel in channelList">
-            <router-link v-bind:to="channel.id">
-                #{{channel.name}}
-            </router-link>
+        <ul>
+            <li v-bind:id="channel.channelId" v-for="channel in channels">
+                <button @click="travel(channel.channelId)">
+                    #{{channel.name}}
+                </button>
+            </li>
         </ul>
     </div>
 </template>
@@ -12,9 +14,14 @@
     export default {
         name: "ChannelsListView",
         props: {
-            channelList: {
-                type: Object,
-                default: {}
+            channels: {
+                type: Array,
+                default: []
+            }
+        },
+        methods: {
+            travel(chanId) {
+                this.$router.push(this.$route.fullPath + "/channel/" + chanId)
             }
         }
     }
