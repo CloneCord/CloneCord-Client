@@ -4,25 +4,25 @@
             <p v-for="ms in messageList">{{getName(ms.senderId)}} : {{ms.message}}</p>
         </div>
         <div class="send">
-            <input type="text" id="msgBox"/>
-            <button>Send</button>
+            <input @keydown.enter="sendMessage(messageText)" id="msgBox" type="text" v-model="messageText"/>
         </div>
     </div>
 </template>
 
 <script>
     import easycallback from "../../../easycallback";
-
+    import {MessagesApi, FormMessage} from "clone_cord_api";
     export default {
         name: "ChannelMessagesView",
         data() {
             return {
-                messageList: []
+                messageList: [],
+                messageText: "",
             }
         },
         watch:{
             "$route.params.channelId": function () {
-                const api = new (require("clone_cord_api").MessagesApi)();
+                const api = new MessagesApi();
 
                 let guildId = this.$route.params.guildId;
                 let channelId = this.$route.params.channelId;
@@ -34,9 +34,22 @@
                 api.getMessages(guildId, channelId, ops, callback);
             }
         },
-        methods:{
-            getName(sId){
+        methods: {
+            getName(sId) {
                 return this.$parent.getNameFromMembers(sId);
+            },
+            sendMessage(messageText) {
+                const api = new MessagesApi();
+                let guildId = this.$route.params.guildId;
+                let channelId = this.$route.params.channelId;
+                let messageData = new FormMessage(messageText);
+
+                let callBack = easycallback(d => {
+                    this.messageList.push(d);
+                });
+
+                api.sendMessage(guildId, channelId, messageData, callBack);
+                this.messageText = "";
             }
         }
     }
@@ -50,7 +63,6 @@
         height: 90%;
         overflow-y: scroll;
     }
-
     .msgList {
         background-color: blueviolet;
     }
@@ -60,8 +72,8 @@
         width: 100%;
     }
 
-    input{
-        width: 80%;
+    input {
+        width: 96%;
     }
 
     p {
