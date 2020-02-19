@@ -12,7 +12,7 @@
         props: {
             userList: {
                 type: Array,
-                default: []
+                default: () => []
             }
         }
     }

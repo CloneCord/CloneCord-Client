@@ -23,7 +23,7 @@
         beforeCreate() {
             const api = new (require("clone_cord_api").UsersApi)();
             let userId = this.$route.params.userId;
-            api.getUserUsingGET(userId, easycallback((d) => {
+            api.getUser(userId, easycallback((d) => {
                 this.user = d;
                 document.title = this.user.username;
             }));

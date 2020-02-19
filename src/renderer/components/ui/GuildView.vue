@@ -16,7 +16,8 @@
         components: {UserListView, ChannelsListView},
         data() {
             return {
-                guild: {}
+                guild: {},
+                updated: false,
             }
         },
         watch: {
@@ -26,16 +27,26 @@
                 let callBack = easycallback((d) => {
                     this.guild = d;
                     document.title = d.name;
+                    this.updated = true;
                 });
-
-                api.getGuildInfoUsingGET(guildId, callBack);
+                this.updated = false;
+                api.getGuildInfo(guildId, callBack);
             },
-            "$route.params.channelId": function (chId) {
-                if (chId !== undefined) {
-                    document.title = this.guild.name + " - " + this.guild.channels.filter(c => {
-                        return c.channelId === chId;
-                    })[0].name;
+            "updated": function (upd) {
+                if(upd === true){
+                    let chId = this.$route.params.channelId;
+                    if (chId !== undefined) {
+                        document.title = this.guild.name + " - " + this.guild.channels.filter(c => {
+                            return c.channelId === chId;
+                        })[0].name;
+                    }
                 }
+            }
+        },
+        methods:{
+            getNameFromMembers(sId){
+                let member = this.guild.members.filter(s => s.id === sId)[0];
+                return member === undefined ? "error" : member.username;
             }
         }
     }

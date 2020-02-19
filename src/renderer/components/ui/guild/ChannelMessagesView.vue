@@ -1,7 +1,11 @@
 <template>
     <div class="msgList" id="Messages">
-        <div class="bg">
-            <p v-for="ms in messageList">{{ms.senderId}} : {{ms.message}}</p>
+        <div class="list">
+            <p v-for="ms in messageList">{{getName(ms.senderId)}} : {{ms.message}}</p>
+        </div>
+        <div class="send">
+            <input type="text" id="msgBox"/>
+            <button>Send</button>
         </div>
     </div>
 </template>
@@ -16,30 +20,48 @@
                 messageList: []
             }
         },
-        beforeCreate() {
-            const api = new (require("clone_cord_api").MessagesApi)();
+        watch:{
+            "$route.params.channelId": function () {
+                const api = new (require("clone_cord_api").MessagesApi)();
 
-            let guildId = this.$route.params.guildId;
-            let channelId = this.$route.params.channelId;
-            let ops = {};
-            let callback = easycallback((d) => {
-                this.messageList = d;
-            });
+                let guildId = this.$route.params.guildId;
+                let channelId = this.$route.params.channelId;
+                let ops = {};
+                let callback = easycallback((d) => {
+                    this.messageList = d;
+                });
 
-            api.getMessagesUsingGET(channelId, guildId, ops, callback);
+                api.getMessages(guildId, channelId, ops, callback);
+            }
+        },
+        methods:{
+            getName(sId){
+                return this.$parent.getNameFromMembers(sId);
+            }
         }
     }
 </script>
 
 <style scoped>
-    .bg {
+    .list {
         margin-top: 1%;
-        width: 100%;
+        width: 98.5%;
         margin-left: 1%;
+        height: 90%;
+        overflow-y: scroll;
     }
 
     .msgList {
         background-color: blueviolet;
+    }
+
+    .send{
+        margin-left: 1%;
+        width: 100%;
+    }
+
+    input{
+        width: 80%;
     }
 
     p {

@@ -27,7 +27,7 @@
     export default {
         name: "Register",
         components: {LeftLogoBar},
-        beforeCreate(): void {
+        beforeCreate(){
             document.title = "Creation de compte"
         },
         methods: {
@@ -64,7 +64,6 @@
                 let main = this;
                 let callback = function (data, response) {
                     if (response.statusCode === 400) {
-                        console.log(response);
                         let errors = response.body.errors;
                         errors.forEach(function (err) {
                             let field = main.$refs[err.field];
@@ -82,7 +81,7 @@
                         })
                     }
                 };
-                api.signUpUsingPOST(reg, easycallback(callback));
+                api.signUp(reg, easycallback(callback));
             },
             toLogin() {
                 this.$router.replace("./login")

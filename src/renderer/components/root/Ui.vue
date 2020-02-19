@@ -18,10 +18,10 @@
         },
         beforeCreate() {
             const api = new (require("clone_cord_api").UsersApi)();
-            api.getSelfUsingGET(easycallback((d) => {
+            api.getSelf(easycallback((d) => {
                 this.user = d;
             }));
-            api.getSelfGuildsUsingGET(easycallback((d) => {
+            api.getSelfGuilds(easycallback((d) => {
                 this.guildList = d;
             }));
         }

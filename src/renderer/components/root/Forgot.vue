@@ -22,7 +22,7 @@
     export default {
         name: "Forgot",
         components: {LeftLogoBar},
-        beforeCreate(): void {
+        beforeCreate(){
             document.title = "Récupération de compte"
         },
     }

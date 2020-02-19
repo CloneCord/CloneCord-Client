@@ -2,7 +2,7 @@
     <div id="ServerBar">
         <ul>
             <li v-bind:id="g.id" v-for="g in guildList">
-                <router-link v-bind:to="'/ui/guild/' + g.id">name : {{g.name}}</router-link>
+                <router-link v-bind:to="getUrl(g)">{{g.name}}</router-link>
             </li>
         </ul>
     </div>
@@ -15,6 +15,15 @@
             guildList: {
                 type: Array,
                 default: []
+            }
+        }, methods:{
+            getUrl(g){
+                if(g.channels.length > 0){
+                    return "/ui/guild/" + g.id + "/channel/" + g.channels[0].channelId;
+                }
+                else{
+                    return "/ui/guild/" + g.id
+                }
             }
         }
     }

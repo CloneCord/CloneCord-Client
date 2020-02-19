@@ -22,20 +22,21 @@
     import swal from "sweetalert2";
     import easycallback from "../../easycallback";
 
+    import {ApiClient, AuthenticationApi, FormLogin, UsersApi} from "clone_cord_api";
+
     export default {
         name: "Login",
         components: {LeftLogoBar},
-        beforeCreate(): void {
+        beforeCreate(){
             document.title = "Connexion"
         },
         methods: {
             tryLogIn() {
                 let email = this.$refs.email.value;
                 let password = this.$refs.password.value;
-                const CloneCordAPI = require("clone_cord_api");
-                const AuthApi = new CloneCordAPI.AuthenticationApi();
+                const AuthApi = new AuthenticationApi();
 
-                const loginData = new CloneCordAPI.FormLogin(email, password);
+                const loginData = new FormLogin(email, password);
 
                 let callback = easycallback((d, r) => {
                     if (r.statusCode === 403) {
@@ -47,18 +48,17 @@
                         });
                     } else {
                         let jwt = r.headers.authorization.replace("Bearer ", "");
-                        let defClient = CloneCordAPI.ApiClient.instance;
-                        let token = defClient.authentications['JWT'];
+                        let defClient = ApiClient.instance;
+                        let token = defClient.authentications['user-auth'];
                         token.apiKey = jwt;
                         token.apiKeyPrefix = "Bearer";
-                        let userApi = new CloneCordAPI.UsersApi();
-                        userApi.getSelfUsingGET(easycallback((d) => {
+                        let userApi = new UsersApi();
+                        userApi.getSelf(easycallback((d) => {
                             this.$router.replace("/ui/user/" + d.id);
                         }));
-
                     }
                 });
-                AuthApi.loginUsingPOST(loginData, callback);
+                AuthApi.login(loginData, callback);
             }
         }
     }
