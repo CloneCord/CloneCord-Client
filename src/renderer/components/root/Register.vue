@@ -27,6 +27,9 @@
     export default {
         name: "Register",
         components: {LeftLogoBar},
+        beforeCreate(): void {
+            document.title = "Creation de compte"
+        },
         methods: {
             onRegister() {
                 //Get objects

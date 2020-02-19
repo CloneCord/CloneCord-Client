@@ -25,6 +25,9 @@
     export default {
         name: "Login",
         components: {LeftLogoBar},
+        beforeCreate(): void {
+            document.title = "Connexion"
+        },
         methods: {
             tryLogIn() {
                 let email = this.$refs.email.value;

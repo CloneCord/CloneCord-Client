@@ -32,7 +32,7 @@
             },
             "$route.params.channelId": function (chId) {
                 if (chId !== undefined) {
-                    document.title = this.guild.name + this.guild.channels.filter(c => {
+                    document.title = this.guild.name + " - " + this.guild.channels.filter(c => {
                         return c.channelId === chId;
                     })[0].name;
                 }
