@@ -1,5 +1,5 @@
 <template>
-    <div id="ChannelList">
+    <div class="back" id="ChannelList">
         <ul>
             <li v-bind:id="channel.channelId" v-for="channel in channels">
                 <button @click="travel(channel.channelId)">
@@ -28,5 +28,17 @@
 </script>
 
 <style scoped>
+    .back {
+        background-color: chartreuse;
 
+    }
+
+    ul {
+        margin-top: 10%;
+        margin-left: 10%;
+    }
+
+    li {
+        list-style-position: inside;
+    }
 </style>

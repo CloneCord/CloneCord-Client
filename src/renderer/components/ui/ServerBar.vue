@@ -21,5 +21,16 @@
 </script>
 
 <style scoped>
+    a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+    }
 
+    /* When you mouse over the navigation links, change their color */
+    a:hover {
+        color: #f1f1f1;
+    }
 </style>

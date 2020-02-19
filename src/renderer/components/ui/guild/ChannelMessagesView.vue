@@ -1,6 +1,8 @@
 <template>
-    <div id="Messages">
-        <span v-for="ms in messageList">{{ms.senderId}} : {{ms.message}}</span>
+    <div class="msgList" id="Messages">
+        <div class="bg">
+            <p v-for="ms in messageList">{{ms.senderId}} : {{ms.message}}</p>
+        </div>
     </div>
 </template>
 
@@ -20,7 +22,6 @@
             let guildId = this.$route.params.guildId;
             let channelId = this.$route.params.channelId;
             let ops = {};
-
             let callback = easycallback((d) => {
                 this.messageList = d;
             });
@@ -31,5 +32,17 @@
 </script>
 
 <style scoped>
+    .bg {
+        margin-top: 1%;
+        width: 100%;
+        margin-left: 1%;
+    }
 
+    .msgList {
+        background-color: blueviolet;
+    }
+
+    p {
+        color: antiquewhite;
+    }
 </style>

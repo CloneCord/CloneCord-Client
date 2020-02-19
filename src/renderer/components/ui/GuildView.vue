@@ -1,8 +1,8 @@
 <template>
     <div id="GuildView">
-        <ChannelsListView v-bind:channels="channelList"/>
-        <router-view/>
-        <UserListView v-bind:userList="userList"/>
+        <ChannelsListView id="channelList" v-bind:channels="guild.channels"/>
+        <router-view id="currentChannel"/>
+        <UserListView id="userList" v-bind:userList="guild.members"/>
     </div>
 </template>
 
@@ -16,8 +16,7 @@
         components: {UserListView, ChannelsListView},
         data() {
             return {
-                channelList: [],
-                userList: []
+                guild: {}
             }
         },
         watch: {
@@ -25,16 +24,41 @@
                 const api = new (require("clone_cord_api").GuildsApi)();
 
                 let callBack = easycallback((d) => {
-                    this.channelList = d.channels;
-                    this.userList = d.members;
+                    this.guild = d;
+                    document.title = d.name;
                 });
 
                 api.getGuildInfoUsingGET(guildId, callBack);
+            },
+            "$route.params.channelId": function (chId) {
+                if (chId !== undefined) {
+                    document.title = this.guild.name + this.guild.channels.filter(c => {
+                        return c.channelId === chId;
+                    })[0].name;
+                }
             }
         }
     }
 </script>
 
 <style scoped>
+    #userList {
+        width: 10%;
+        right: 0;
+        float: right;
+        height: 100%;
+    }
 
+    #currentChannel {
+        float: left;
+        height: 100%;
+        width: 80%;
+    }
+
+    #channelList {
+        width: 10%;
+        left: 0;
+        float: left;
+        height: 100%;
+    }
 </style>

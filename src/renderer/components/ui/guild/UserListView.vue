@@ -1,7 +1,7 @@
 <template>
-    <div id="UserList">
+    <div class="background" id="UserList">
         <ul v-for="u in userList">
-            <router-link v-bind:to="'../user/' + u.id">{{u.username}}</router-link>
+            <router-link v-bind:to="'/ui/user/' + u.id">{{u.username}}</router-link>
         </ul>
     </div>
 </template>
@@ -19,5 +19,12 @@
 </script>
 
 <style scoped>
+    .background {
+        background-color: cadetblue;
+    }
 
+    ul {
+        margin-top: 10%;
+        margin-left: 10%;
+    }
 </style>

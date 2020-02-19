@@ -1,7 +1,7 @@
 <template>
     <div id="UI">
-        <ServerBar :guildList="guildList"/>
-        <router-view/>
+        <ServerBar :guildList="guildList" id="serverList"/>
+        <router-view id="other"/>
     </div>
 </template>
 
@@ -29,5 +29,21 @@
 </script>
 
 <style scoped>
+    #serverList {
+        height: 100%; /* Full-height: remove this if you want "auto" height */
+        width: 160px; /* Set the width of the sidebar */
+        top: 0; /* Stay at the top */
+        left: 0;
+        background-color: #111; /* Black */
+        overflow-x: hidden; /* Disable horizontal scroll */
+        padding-top: 20px;
+    }
 
+    /* The navigation menu links */
+    #other {
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+    }
 </style>

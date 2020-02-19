@@ -25,6 +25,7 @@
             let userId = this.$route.params.userId;
             api.getUserUsingGET(userId, easycallback((d) => {
                 this.user = d;
+                document.title = this.user.username;
             }));
         }
     }
