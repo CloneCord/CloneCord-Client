@@ -2051,10 +2051,10 @@ clone@^1.0.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-clone_cord_api@1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/clone_cord_api/-/clone_cord_api-1.0.6.tgz#2258a8956906935a4d4d142e923bd070345e7f65"
-  integrity sha512-8ojXRwScioyYk7AKpCNXo/0WER5yqJ6i/k4Nn1ZUOLBMyBKJh0kaq9D2faPyczdhFCOfMWBwxtHsBk7glLKiWA==
+clone_cord_api@1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/clone_cord_api/-/clone_cord_api-1.0.8.tgz#20f9b72c13aa8d6d2f0d8a7fb5c4fee2f5e784f7"
+  integrity sha512-3Y2DLGKARqt45dxTyUtHFGZ5SkncZCUAtxlwF2Jh+bDcZE3cqBgCjSUnxapZc6f5N4lJR2de9Euou0bAirW8Yw==
   dependencies:
     "@babel/cli" "^7.0.0"
     superagent "3.7.0"
