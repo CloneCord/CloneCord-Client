@@ -5,11 +5,17 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import routes from "./routing"
 import App from './components/App.vue'
-import * as Sentry from "@sentry/electron";
+import showReportDialog, * as Sentry from "@sentry/electron"
 
 Sentry.init({
     dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718',
-    release: 'clonecord-client@' + process.env.npm_package_version
+    release: 'clonecord-client@' + process.env.npm_package_version,
+    beforeSend(event) {
+        if (event.exception) {
+            showReportDialog();
+        }
+        return event;
+    }
 });
 
 Vue.use(VueRouter);
