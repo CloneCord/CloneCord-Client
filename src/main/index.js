@@ -4,10 +4,6 @@ import {format as formatUrl} from 'url'
 
 const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 
-init({
-    dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718',
-    release: 'clonecord-client@' + process.env.npm_package_version
-});
 
 let mainWindow;
 
@@ -26,7 +22,7 @@ const mainMenuTemplate = [
     },
     {
         label: 'Développement',
-        submenu:[
+        submenu: [
             {
                 role: 'toggleDevTools'
             }
@@ -36,14 +32,21 @@ const mainMenuTemplate = [
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
-function startApp(){
+if (!isDevelopment) {
+    init({
+        dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718',
+        release: 'clonecord-client@' + process.env.npm_package_version
+    });
+}
+
+function startApp() {
     let w = createWindow();
     const menu = Menu.buildFromTemplate(mainMenuTemplate);
     Menu.setApplicationMenu(menu);
     return w;
 }
 
-function createWindow(){
+function createWindow() {
     let window = new BrowserWindow({
         width: 1280,
         height: 720,
