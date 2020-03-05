@@ -1,33 +1,35 @@
+import {init} from '@sentry/electron/dist/main'
+import * as path from 'path'
+import {format as formatUrl} from 'url'
 
 const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 
+init({dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718'});
+
 let mainWindow;
 
-const mainMenuTemplate =  [
-  {
-    label: 'File',
-    submenu:[
-      {
-          label: 'Quitter',
-          accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
-          click() {
-              app.quit();
-          }
-      }
-    ]
-  },
-  {
-      label: 'Développement',
-      submenu:[
-        {
-          role: 'toggleDevTools'
-        }
-      ]
-  }
+const mainMenuTemplate = [
+    {
+        label: 'File',
+        submenu: [
+            {
+                label: 'Quitter',
+                accelerator: process.platform === 'darwin' ? 'Command+Q' : 'Ctrl+Q',
+                click() {
+                    app.quit();
+                }
+            }
+        ]
+    },
+    {
+        label: 'Développement',
+        submenu:[
+            {
+                role: 'toggleDevTools'
+            }
+        ]
+    }
 ];
-
-import * as path from 'path'
-import {format as formatUrl} from 'url'
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -50,8 +52,7 @@ function createWindow(){
     });
     if (isDevelopment) {
         window.loadURL(`http://localhost:${process.env.ELECTRON_WEBPACK_WDS_PORT}`)
-    }
-    else {
+    } else {
         window.loadURL(formatUrl({
             pathname: path.join(__dirname, 'index.html'),
             protocol: 'file',
@@ -61,6 +62,7 @@ function createWindow(){
     window.on('closed', function(){
         app.exit();
     });
+
     return window;
 }
 
