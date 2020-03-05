@@ -4,7 +4,10 @@ import {format as formatUrl} from 'url'
 
 const {app, BrowserWindow, ipcMain, Menu} = require("electron");
 
-init({dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718'});
+init({
+    dsn: 'https://10404f40381f41b88d7990684b4c748f@sentry.io/3702718',
+    release: 'clonecord-client@' + process.env.npm_package_version
+});
 
 let mainWindow;
 
