@@ -31,16 +31,17 @@
 <style scoped>
     #serverList {
         height: 100%; /* Full-height: remove this if you want "auto" height */
-        width: 160px; /* Set the width of the sidebar */
+        width: 100px; /* Set the width of the sidebar */
         top: 0; /* Stay at the top */
         left: 0;
-        background-color: #111; /* Black */
+        background-color: #1C2026; /* Black */
         overflow-x: hidden; /* Disable horizontal scroll */
         padding-top: 20px;
     }
 
     /* The navigation menu links */
     #other {
+        background-color: #2B2E36;
         height: 100%;
         width: 100%;
         top: 0;
