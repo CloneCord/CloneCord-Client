@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "clone_cord_api": "1.0.8",
-    "electron": "^9.4.0",
+    "electron": "^13.6.6",
     "electron-builder": "^22.3.2",
     "electron-webpack": "^2.7.4",
     "electron-webpack-vue": "^2.3.0",
